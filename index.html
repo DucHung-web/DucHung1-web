@@ -3,144 +3,181 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Khám Phá Du Lịch Cô Tô</title>
+<title>Du Lịch Cô Tô - Premium+</title>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-    margin:0;
     font-family:'Segoe UI',sans-serif;
-    background:linear-gradient(to right,#eef2f7,#dff1ff);
+    background:#eef2f7;
 }
 
 /* HEADER */
 header{
-    background:linear-gradient(90deg,#0a3d62,#3c6382);
+    background:linear-gradient(120deg,#0a3d62,#3c6382);
     color:white;
     text-align:center;
-    padding:25px;
-    font-size:30px;
+    padding:30px;
+    font-size:32px;
     font-weight:bold;
-    letter-spacing:1px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
 /* MENU */
 nav{
-    background:#3c6382;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    background:white;
     padding:12px;
-    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 nav a{
-    color:white;
-    margin:0 15px;
     text-decoration:none;
+    color:#0a3d62;
     font-weight:bold;
-    padding:8px 12px;
-    border-radius:6px;
+    padding:8px 16px;
+    border-radius:20px;
     transition:0.3s;
 }
 nav a:hover{
-    background:#f6b93b;
-    color:#0a3d62;
+    background:#0a3d62;
+    color:white;
 }
 
-/* BANNER */
+/* HERO */
 .banner{
-    height:350px;
-    background:url('https://picsum.photos/1200/500') center/cover;
+    height:420px;
+    background:url('https://picsum.photos/1400/600') center/cover;
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
     color:white;
-    font-size:42px;
-    font-weight:bold;
+    text-align:center;
     position:relative;
 }
 .banner::after{
     content:"";
     position:absolute;
-    top:0;left:0;
     width:100%;height:100%;
-    background:rgba(0,0,0,0.5);
+    background:rgba(0,0,0,0.55);
 }
-.banner span{
-    position:relative;
+.banner h1{
     z-index:1;
-    animation:fadeIn 2s ease;
+    font-size:48px;
+    animation:fadeUp 1.5s ease;
+}
+.banner p{
+    z-index:1;
 }
 
 /* ANIMATION */
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(30px)}
+    to{opacity:1; transform:translateY(0)}
+}
+
+/* WAVE */
+.wave{
+    height:80px;
+    background:linear-gradient(to right,#3c6382,#0a3d62);
+    clip-path:polygon(0 0,100% 0,100% 60%,0 100%);
+}
+
+/* STATS */
+.stats{
+    display:flex;
+    justify-content:space-around;
+    padding:40px;
+    background:white;
+    text-align:center;
+}
+.stat h2{
+    color:#0a3d62;
+    font-size:28px;
+}
+.stat p{color:#666}
+
+/* FEATURES */
+.features{
+    display:flex;
+    gap:20px;
+    padding:40px;
+}
+.feature{
+    flex:1;
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+.feature:hover{
+    transform:translateY(-5px);
 }
 
 /* CONTAINER */
 .container{
-    padding:40px;
+    padding:50px;
 }
 
 /* GRID */
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
+    gap:30px;
 }
 
 /* CARD */
 .card{
     background:white;
-    border-radius:15px;
+    border-radius:18px;
     overflow:hidden;
-    box-shadow:0 8px 25px rgba(0,0,0,0.1);
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
     transition:0.4s;
 }
 .card:hover{
-    transform:translateY(-10px) scale(1.02);
+    transform:translateY(-12px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.2);
 }
-
-/* IMAGE ZOOM */
 .card img{
     width:100%;
-    height:180px;
+    height:200px;
     object-fit:cover;
     transition:0.4s;
 }
 .card:hover img{
     transform:scale(1.1);
 }
-
-/* CONTENT */
 .card-content{
-    padding:18px;
-}
-.card h3{
-    margin:0 0 10px;
-    color:#0a3d62;
-}
-.card p{
-    color:#555;
+    padding:20px;
 }
 
 /* BUTTON */
 .btn{
     display:inline-block;
-    margin-top:10px;
-    padding:8px 15px;
+    margin-top:12px;
+    padding:10px 18px;
+    border-radius:30px;
     background:linear-gradient(90deg,#0a3d62,#3c6382);
     color:white;
     text-decoration:none;
-    border-radius:20px;
     transition:0.3s;
 }
 .btn:hover{
-    background:#f6b93b;
-    color:#0a3d62;
+    transform:scale(1.05);
 }
 
 /* VIDEO */
+.video{
+    margin-top:50px;
+}
 .video iframe{
-    border-radius:10px;
+    border-radius:15px;
 }
 
 /* FOOTER */
@@ -148,83 +185,89 @@ footer{
     background:#0a3d62;
     color:white;
     text-align:center;
-    padding:20px;
+    padding:30px;
     margin-top:40px;
-    font-size:14px;
-    letter-spacing:1px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    🌍 Khám Phá Du Lịch Cô Tô
-</header>
+<header>🌍 Du Lịch Cô Tô Cao Cấp</header>
 
 <nav>
-    <a href="#">Trang chủ</a>
-    <a href="#">Địa điểm</a>
-    <a href="#">Video</a>
-    <a href="#">Liên hệ</a>
+<a href="#">Trang chủ</a>
+<a href="#">Địa điểm</a>
+<a href="#">Video</a>
+<a href="#">Liên hệ</a>
 </nav>
 
 <div class="banner">
-    <span>Du lịch khắp đảo Cô Tô</span>
+<h1>Khám phá thiên đường biển đảo</h1>
+<p>Trải nghiệm vẻ đẹp tuyệt vời của Cô Tô</p>
+</div>
+
+<div class="wave"></div>
+
+<div class="stats">
+<div class="stat"><h2>10+</h2><p>Địa điểm đẹp</p></div>
+<div class="stat"><h2>1000+</h2><p>Khách du lịch</p></div>
+<div class="stat"><h2>5★</h2><p>Đánh giá</p></div>
+</div>
+
+<div class="features">
+<div class="feature">🌊 Biển xanh tuyệt đẹp</div>
+<div class="feature">📸 Check-in sống ảo</div>
+<div class="feature">🍤 Hải sản tươi ngon</div>
 </div>
 
 <div class="container">
+<div class="grid">
 
-    <div class="grid">
+<div class="card">
+<img src="https://cotoreview.com/wp-content/uploads/2025/11/bai-da-mong-rong-1-1024x768.jpg">
+<div class="card-content">
+<h3>Bãi đá móng rồng</h3>
+<p>Vẻ đẹp độc đáo từ thiên nhiên kỳ vĩ.</p>
+<a href="#" class="btn">Khám phá</a>
+</div>
+</div>
 
-        <!-- CARD 1 -->
-        <div class="card">
-            <img src="https://cotoreview.com/wp-content/uploads/2025/11/bai-da-mong-rong-1-1024x768.jpg">
-            <div class="card-content">
-                <h3>Bãi đá móng rồng</h3>
-                <p>Vẻ đẹp của tạo hình các tầng đá.</p>
-                <a href="#" class="btn">Xem thêm</a>
-            </div>
-        </div>
+<div class="card">
+<img src="https://cototourism.vn/wp-content/uploads/2024/02/BAC-HO-2.webp">
+<div class="card-content">
+<h3>Tượng đài Bác Hồ</h3>
+<p>Địa điểm lịch sử thiêng liêng.</p>
+<a href="#" class="btn">Khám phá</a>
+</div>
+</div>
 
-        <!-- CARD 2 -->
-        <div class="card">
-            <img src="https://cototourism.vn/wp-content/uploads/2024/02/BAC-HO-2.webp">
-            <div class="card-content">
-                <h3>Khu tượng đài Bác Hồ</h3>
-                <p>Nơi được Bác Hồ cho phép dựng tượng của người khi còn sống.</p>
-                <a href="#" class="btn">Xem thêm</a>
-            </div>
-        </div>
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDCCEYIFNav-wp9I_his6jcRJsQPHrHY_L7g&s">
+<div class="card-content">
+<h3>Bãi biển Hồng Vàn</h3>
+<p>Bãi biển đẹp và yên bình nhất.</p>
+<a href="#" class="btn">Khám phá</a>
+</div>
+</div>
 
-        <!-- CARD 3 -->
-        <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDCCEYIFNav-wp9I_his6jcRJsQPHrHY_L7g&s">
-            <div class="card-content">
-                <h3>Bãi biển Hồng Vàn</h3>
-                <p>Một trong những bãi biển đẹp nhất miền Bắc.</p>
-                <a href="#" class="btn">Xem thêm</a>
-            </div>
-        </div>
+</div>
 
-    </div>
+<div class="card video">
+<div class="card-content">
+<h3>🎬 Video du lịch</h3>
 
-    <!-- VIDEO -->
-    <div class="card video" style="margin-top:30px;">
-        <div class="card-content">
-            <h3>🎬 Video du lịch</h3>
+<div onclick="this.innerHTML='<iframe width=100% height=400 src=https://www.youtube.com/embed/QjAPQGsLA3c allowfullscreen></iframe>'" style="cursor:pointer;">
+<img src="https://img.youtube.com/vi/QjAPQGsLA3c/maxresdefault.jpg" width="100%">
+</div>
 
-            <div onclick="this.innerHTML='<iframe width=100% height=400 src=https://www.youtube.com/embed/QjAPQGsLA3c allowfullscreen></iframe>'" style="cursor:pointer;">
-                <img src="https://img.youtube.com/vi/QjAPQGsLA3c/maxresdefault.jpg" width="100%">
-            </div>
-
-        </div>
-    </div>
+</div>
+</div>
 
 </div>
 
 <footer>
-    © 2026 - Website du lịch của bạn
+© 2026 - Website du lịch chuyên nghiệp
 </footer>
 
 </body>
