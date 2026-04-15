@@ -3,13 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Du Lịch Cô Tô - Premium+</title>
+<title>Du Lịch Cô Tô - Premium++</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+
 body{
     font-family:'Segoe UI',sans-serif;
-    background:#eef2f7;
+    background:linear-gradient(135deg,#eef2f7,#dfe9f3);
+    transition:0.4s;
+}
+
+/* DARK MODE */
+body.dark{
+    background:#0f172a;
+    color:white;
 }
 
 /* HEADER */
@@ -17,9 +25,8 @@ header{
     background:linear-gradient(120deg,#0a3d62,#3c6382);
     color:white;
     text-align:center;
-    padding:30px;
+    padding:25px;
     font-size:32px;
-    font-weight:bold;
     position:sticky;
     top:0;
     z-index:1000;
@@ -29,62 +36,72 @@ header{
 nav{
     display:flex;
     justify-content:center;
-    gap:20px;
-    background:white;
-    padding:12px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    gap:15px;
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(10px);
+    padding:10px;
 }
 nav a{
     text-decoration:none;
     color:#0a3d62;
-    font-weight:bold;
     padding:8px 16px;
     border-radius:20px;
-    transition:0.3s;
 }
 nav a:hover{
     background:#0a3d62;
     color:white;
 }
 
+/* DARK BUTTON */
+.toggle{
+    position:fixed;
+    right:20px;
+    top:90px;
+    background:#0a3d62;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
 /* HERO */
 .banner{
-    height:420px;
+    height:400px;
     background:url('https://picsum.photos/1400/600') center/cover;
     display:flex;
-    flex-direction:column;
     align-items:center;
     justify-content:center;
     color:white;
-    text-align:center;
     position:relative;
 }
 .banner::after{
     content:"";
     position:absolute;
     width:100%;height:100%;
-    background:rgba(0,0,0,0.55);
+    background:rgba(0,0,0,0.6);
 }
 .banner h1{
     z-index:1;
-    font-size:48px;
-    animation:fadeUp 1.5s ease;
-}
-.banner p{
-    z-index:1;
+    font-size:42px;
+    animation:fadeUp 1.2s;
 }
 
 /* ANIMATION */
 @keyframes fadeUp{
-    from{opacity:0; transform:translateY(30px)}
-    to{opacity:1; transform:translateY(0)}
+    from{opacity:0;transform:translateY(30px)}
+    to{opacity:1;transform:translateY(0)}
 }
 
-/* WAVE */
-.wave{
-    height:80px;
-    background:linear-gradient(to right,#3c6382,#0a3d62);
-    clip-path:polygon(0 0,100% 0,100% 60%,0 100%);
+/* SCROLL EFFECT */
+.hidden{
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.8s;
+}
+.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
 /* STATS */
@@ -92,20 +109,21 @@ nav a:hover{
     display:flex;
     justify-content:space-around;
     padding:40px;
+}
+.stat{
     background:white;
-    text-align:center;
+    padding:20px;
+    border-radius:15px;
 }
-.stat h2{
-    color:#0a3d62;
-    font-size:28px;
+body.dark .stat{
+    background:#1e293b;
 }
-.stat p{color:#666}
 
 /* FEATURES */
 .features{
     display:flex;
     gap:20px;
-    padding:40px;
+    padding:30px;
 }
 .feature{
     flex:1;
@@ -113,71 +131,63 @@ nav a:hover{
     padding:20px;
     border-radius:15px;
     text-align:center;
-    box-shadow:0 5px 20px rgba(0,0,0,0.1);
-    transition:0.3s;
 }
-.feature:hover{
-    transform:translateY(-5px);
-}
-
-/* CONTAINER */
-.container{
-    padding:50px;
+body.dark .feature{
+    background:#1e293b;
 }
 
 /* GRID */
+.container{padding:40px}
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
 }
 
 /* CARD */
 .card{
     background:white;
-    border-radius:18px;
+    border-radius:15px;
     overflow:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
     transition:0.4s;
 }
+body.dark .card{
+    background:#1e293b;
+}
 .card:hover{
-    transform:translateY(-12px);
-    box-shadow:0 20px 40px rgba(0,0,0,0.2);
+    transform:translateY(-10px);
 }
 .card img{
     width:100%;
     height:200px;
     object-fit:cover;
-    transition:0.4s;
 }
-.card:hover img{
-    transform:scale(1.1);
-}
-.card-content{
-    padding:20px;
-}
+.card-content{padding:15px}
 
 /* BUTTON */
 .btn{
     display:inline-block;
-    margin-top:12px;
-    padding:10px 18px;
-    border-radius:30px;
-    background:linear-gradient(90deg,#0a3d62,#3c6382);
+    padding:8px 15px;
+    background:#0a3d62;
     color:white;
-    text-decoration:none;
-    transition:0.3s;
-}
-.btn:hover{
-    transform:scale(1.05);
+    border-radius:20px;
+    margin-top:10px;
 }
 
 /* VIDEO */
-.video{
-    margin-top:50px;
-}
-.video iframe{
-    border-radius:15px;
+.video{margin-top:40px}
+
+/* BACK TO TOP */
+.top{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#0a3d62;
+    color:white;
+    padding:12px;
+    border-radius:50%;
+    cursor:pointer;
+    display:none;
 }
 
 /* FOOTER */
@@ -185,8 +195,14 @@ footer{
     background:#0a3d62;
     color:white;
     text-align:center;
-    padding:30px;
-    margin-top:40px;
+    padding:25px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .features{
+        flex-direction:column;
+    }
 }
 </style>
 </head>
@@ -202,34 +218,33 @@ footer{
 <a href="#">Liên hệ</a>
 </nav>
 
+<button class="toggle" onclick="toggleMode()">🌙</button>
+
 <div class="banner">
 <h1>Khám phá thiên đường biển đảo</h1>
-<p>Trải nghiệm vẻ đẹp tuyệt vời của Cô Tô</p>
 </div>
 
-<div class="wave"></div>
-
-<div class="stats">
-<div class="stat"><h2>10+</h2><p>Địa điểm đẹp</p></div>
-<div class="stat"><h2>1000+</h2><p>Khách du lịch</p></div>
+<div class="stats hidden">
+<div class="stat"><h2>10+</h2><p>Địa điểm</p></div>
+<div class="stat"><h2>1000+</h2><p>Khách</p></div>
 <div class="stat"><h2>5★</h2><p>Đánh giá</p></div>
 </div>
 
-<div class="features">
-<div class="feature">🌊 Biển xanh tuyệt đẹp</div>
-<div class="feature">📸 Check-in sống ảo</div>
-<div class="feature">🍤 Hải sản tươi ngon</div>
+<div class="features hidden">
+<div class="feature">🌊 Biển xanh</div>
+<div class="feature">📸 Check-in</div>
+<div class="feature">🍤 Hải sản</div>
 </div>
 
-<div class="container">
+<div class="container hidden">
 <div class="grid">
 
 <div class="card">
 <img src="https://cotoreview.com/wp-content/uploads/2025/11/bai-da-mong-rong-1-1024x768.jpg">
 <div class="card-content">
 <h3>Bãi đá móng rồng</h3>
-<p>Vẻ đẹp độc đáo từ thiên nhiên kỳ vĩ.</p>
-<a href="#" class="btn">Khám phá</a>
+<p>Vẻ đẹp thiên nhiên kỳ vĩ</p>
+<a class="btn">Khám phá</a>
 </div>
 </div>
 
@@ -237,8 +252,8 @@ footer{
 <img src="https://cototourism.vn/wp-content/uploads/2024/02/BAC-HO-2.webp">
 <div class="card-content">
 <h3>Tượng đài Bác Hồ</h3>
-<p>Địa điểm lịch sử thiêng liêng.</p>
-<a href="#" class="btn">Khám phá</a>
+<p>Địa điểm lịch sử</p>
+<a class="btn">Khám phá</a>
 </div>
 </div>
 
@@ -246,8 +261,8 @@ footer{
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDCCEYIFNav-wp9I_his6jcRJsQPHrHY_L7g&s">
 <div class="card-content">
 <h3>Bãi biển Hồng Vàn</h3>
-<p>Bãi biển đẹp và yên bình nhất.</p>
-<a href="#" class="btn">Khám phá</a>
+<p>Yên bình và đẹp</p>
+<a class="btn">Khám phá</a>
 </div>
 </div>
 
@@ -255,7 +270,7 @@ footer{
 
 <div class="card video">
 <div class="card-content">
-<h3>🎬 Video du lịch</h3>
+<h3>🎬 Video</h3>
 
 <div onclick="this.innerHTML='<iframe width=100% height=400 src=https://www.youtube.com/embed/QjAPQGsLA3c allowfullscreen></iframe>'" style="cursor:pointer;">
 <img src="https://img.youtube.com/vi/QjAPQGsLA3c/maxresdefault.jpg" width="100%">
@@ -266,9 +281,37 @@ footer{
 
 </div>
 
-<footer>
-© 2026 - Website du lịch chuyên nghiệp
-</footer>
+<div class="top" onclick="window.scrollTo(0,0)">↑</div>
+
+<footer>© 2026 - Website du lịch chuyên nghiệp</footer>
+
+<script>
+/* DARK MODE */
+function toggleMode(){
+    document.body.classList.toggle("dark");
+}
+
+/* SCROLL ANIMATION */
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+});
+
+document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
+
+/* BACK TO TOP */
+window.onscroll=function(){
+    let btn=document.querySelector(".top");
+    if(document.documentElement.scrollTop>200){
+        btn.style.display="block";
+    }else{
+        btn.style.display="none";
+    }
+}
+</script>
 
 </body>
 </html>
